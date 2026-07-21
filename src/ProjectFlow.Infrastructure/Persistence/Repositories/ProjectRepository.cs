@@ -16,19 +16,21 @@ public class ProjectRepository : IProjectRepository
     {
         _context.Projects.Add(project);
 
-        
         await _context.SaveChangesAsync();
-        
     }
 
-    public Task DeleteAsync(Project project)
+    public async Task DeleteAsync(Project project)
     {
-        throw new NotImplementedException();
+        _context.Projects.Remove(project);
+
+        await _context.SaveChangesAsync();
     }
 
-    public Task<Project?> GetByIdAsync(Guid id)
+    public async Task<Project?> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var project = await _context.FindAsync<Project>(id);
+
+        return project;
     }
 }
 
