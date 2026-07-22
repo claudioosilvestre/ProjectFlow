@@ -2,7 +2,7 @@ namespace ProjectFlow.Domain.Enums;
 
 public enum ProjectTaskStatus
 {
-    ToDo,
-    InProgress,
-    Done
+    ToDo = 0,
+    InProgress = 1,
+    Done = 2
 }
