@@ -4,7 +4,7 @@ namespace ProjectFlow.Domain.Entities;
 
 public class Project
 {
-    public Guid Id{get;}
+    public Guid Id{get; private set;}
 
     public string Name{get; private set;}
 
@@ -12,12 +12,16 @@ public class Project
 
     public ProjectStatus Status{get; private set;}
 
-    public DateTimeOffset CreatedAt{get;}
+    public DateTimeOffset CreatedAt{get; private set;}
 
     private readonly List<ProjectTask> _tasks = new();
 
     public IReadOnlyCollection<ProjectTask> Tasks => _tasks.AsReadOnly();
 
+    private Project()
+    {
+        // Required by Entity Framework
+    }
     public Project(string name, string description)
     {
         if(string.IsNullOrWhiteSpace(name))

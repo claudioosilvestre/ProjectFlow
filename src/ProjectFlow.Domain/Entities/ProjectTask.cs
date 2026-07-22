@@ -4,7 +4,7 @@ namespace ProjectFlow.Domain.Entities;
 
 public class ProjectTask
 {
-    public Guid Id{get;}
+    public Guid Id{get; private set;}
 
     public string Title{get; private set;}
 
@@ -12,9 +12,13 @@ public class ProjectTask
 
     public ProjectTaskStatus Status{get; private set;}
 
-    public DateTimeOffset CreatedAt{get;}
+    public DateTimeOffset CreatedAt{get; private set;}
 
     public Guid? ProjectId { get; private set; }
+
+    private ProjectTask()
+    {
+    }
 
     public ProjectTask(string title, string description)
     {
